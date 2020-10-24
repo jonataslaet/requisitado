@@ -42,4 +42,17 @@ public class ProdutoService {
 		// produto
 		return ResponseEntity.created(location).body(produtoNovo);
 	}
+	
+	// Atualiza um produto específico
+	public ResponseEntity<?> atualizarProduto(Long id, Produto produtoNovo) {
+		int i = 0;
+		for (Produto p : DataBase.getProdutos()) {
+			if (p.getId() == id) {
+				DataBase.getProdutos().set(i, produtoNovo);
+				return ResponseEntity.ok(p);
+			}
+			i++;
+		}
+		throw new ObjectNotFoundException("O produto não foi encontrado");
+	}
 }

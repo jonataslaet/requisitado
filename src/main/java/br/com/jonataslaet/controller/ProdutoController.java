@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,10 @@ public class ProdutoController {
 	@PostMapping
 	public ResponseEntity<?> cadastrarProduto(@RequestBody @Valid Produto produtoNovo){
 		return ps.cadastrarProduto(produtoNovo);
+	}
+	
+	@PutMapping(value="/{id}")
+	public ResponseEntity<?> atualizarProduto(@PathVariable Long id, @RequestBody Produto produtoAtualizado){
+		return ps.atualizarProduto(id, produtoAtualizado);
 	}
 }
