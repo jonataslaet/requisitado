@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,5 +41,10 @@ public class ProdutoController {
 	@PutMapping(value="/{id}")
 	public ResponseEntity<?> atualizarProduto(@PathVariable Long id, @RequestBody Produto produtoAtualizado){
 		return ps.atualizarProduto(id, produtoAtualizado);
+	}
+	
+	@DeleteMapping(value="/{id}")
+	public ResponseEntity<?> deletarProduto(@PathVariable Long id){
+		return ps.deletarProduto(id);
 	}
 }

@@ -55,4 +55,16 @@ public class ProdutoService {
 		}
 		throw new ObjectNotFoundException("O produto não foi encontrado");
 	}
+	
+	public ResponseEntity<?> deletarProduto(Long id){
+		int i = 0;
+		for (Produto p : DataBase.getProdutos()) {
+			if (p.getId() == id) {
+				DataBase.getProdutos().remove(i);
+				return ResponseEntity.noContent().build();
+			}
+			i++;
+		}
+		throw new ObjectNotFoundException("O produto não foi encontrado");
+	}
 }
