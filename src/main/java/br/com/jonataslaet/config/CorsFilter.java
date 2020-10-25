@@ -30,6 +30,7 @@ public class CorsFilter implements Filter {
 		
 		if (requisitadoApiProperty.getOriginPermitida().equalsIgnoreCase(req.getHeader("Origin"))) {
 			res.setHeader("Access-Control-Allow-Origin", requisitadoApiProperty.getOriginPermitida());
+			res.setHeader("Access-Control-Allow-Methods", "PUT");
 			res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		}
 		chain.doFilter(request, response);
